@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    数据库入门 |  Hexo
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-数据库入门" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  数据库入门
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/06/08/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%85%A5%E9%97%A8/" class="article-date">
+  <time datetime="2020-06-08T13:37:59.000Z" itemprop="datePublished">2020-06-08</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.8k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">7分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="一-创建数据库"><a href="#一-创建数据库" class="headerlink" title="一.创建数据库"></a>一.创建数据库</h1><h2 id="1-快速创建一个表-DDL语句"><a href="#1-快速创建一个表-DDL语句" class="headerlink" title="1.快速创建一个表(DDL语句)"></a>1.快速创建一个表(DDL语句)</h2><p>​    数据库学习需要先创建一个数据库，一个库中可以有许许多多的表。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">create database db1; -- 创建一个数据库</span><br><span class="line">use db1; -- 使用数据库db1</span><br><span class="line">create table stu( -- 创建一个表</span><br><span class="line">	id int primary key auto_increment, -- 设置主键约束自增</span><br><span class="line">	sname varchar(32)，</span><br><span class="line">	brithday DATE,</span><br><span class="line">	class int </span><br><span class="line">);</span><br><span class="line">-- 快速创建一个结构相同的表 </span><br><span class="line">CREATE TABLE newtb LIKE stu;</span><br><span class="line"></span><br><span class="line">-- 删表</span><br><span class="line">drop table newtb;</span><br><span class="line"></span><br><span class="line">-- 查看stu结构</span><br><span class="line">DESC stu;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="2-增删改-DML"><a href="#2-增删改-DML" class="headerlink" title="2.增删改(DML)"></a>2.增删改(DML)</h2><h2 id="1-添加数据"><a href="#1-添加数据" class="headerlink" title="(1).添加数据"></a>(1).添加数据</h2><p><strong>INSERT INTO 表名 (字段名1, 字段名2, …) VALUES (值1, 值2, …)</strong></p>
+<p>​    添加一条数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into stu (id, sname, brithday, class) value (1, &#39;张三&#39;, &#39;2020-01-01&#39;, 1);</span><br></pre></td></tr></table></figure>
+
+<p>​    批量添加数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO stu (id, sname, brithday, class) </span><br><span class="line">VALUE (2, &#39;李四&#39;, &#39;2020-01-02&#39;, 2),</span><br><span class="line">(3, &#39;王五&#39;, &#39;2020-01-03&#39;, 2),</span><br><span class="line">(4, &#39;赵六&#39;, &#39;2020-01-04&#39;, 2),</span><br><span class="line">(5, &#39;田七&#39;, &#39;2020-01-05&#39;, 2),</span><br><span class="line">(6, &#39;王八&#39;, &#39;2020-01-06&#39;, NULL),</span><br><span class="line">(7, &#39;jojo&#39;, &#39;2020-01-07&#39;, 2);</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-修改数据"><a href="#2-修改数据" class="headerlink" title="(2).修改数据"></a>(2).修改数据</h2><p><strong>UPDATE 表名 SET 字段名=值 WHERE 字段名=值;</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE stu SET sname &#x3D; &#39;历史&#39; WHERE id &#x3D; 2;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-删除数据"><a href="#3-删除数据" class="headerlink" title="(3).删除数据"></a>(3).删除数据</h2><p><strong>DELETE FROM 表名 WHERE 字段名=值;</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from stu where id &#x3D; 7;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="二-查询数据库"><a href="#二-查询数据库" class="headerlink" title="二.查询数据库"></a>二.查询数据库</h1><h2 id="1-简单查询"><a href="#1-简单查询" class="headerlink" title="1.简单查询"></a>1.简单查询</h2><p>​    查询是一种不会修改表的操作，在日常的生活中，添加和查询是最多的。</p>
+<p>​    查询数据库中，其中全部的语句都在下面有一一对应的说明，其中聚合函数与group by有关，是依据分组之后的聚合。<strong>聚合函数</strong>有5个count()，max()，min()，sum()，avg()。</p>
+<p>​    数据库中是有函数使用的，不会就去菜鸟查。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select distinct *,字段,字段的计算,聚合函数,字段 as 别名 </span><br><span class="line">from 表名</span><br><span class="line">where 条件 and 条件 or 条件</span><br><span class="line">[group by 分组的字段,分组的字段 having 分组后的条件]</span><br><span class="line">[order by 排序字段 asc升序&#x2F;desc降序,排序字段 asc升序&#x2F;desc降序]</span><br><span class="line">[limit startIndex 开始索引, pageSize 每页显示个数]</span><br></pre></td></tr></table></figure>
+
+<p><strong>数据库关键字的执行顺序问题</strong></p>
+<ol>
+<li>select  表示查询</li>
+<li>from 查询哪张表</li>
+<li>where  进行数据的筛选</li>
+<li>group by  将筛选后的数据进行分组</li>
+<li>having 将分组后的数据进行筛选</li>
+<li>select 字段 确定显示的字段数据</li>
+<li>distinct  将显示的字段去重</li>
+<li>order by 执行排序</li>
+<li>limit 分页</li>
+</ol>
+<h2 id="2-复杂查询"><a href="#2-复杂查询" class="headerlink" title="2.复杂查询"></a>2.复杂查询</h2><h3 id="1-约束"><a href="#1-约束" class="headerlink" title="(1).约束"></a>(1).约束</h3><p>​    在数据库中，我们有时需要对我们添加的数据管理，所以我们需要添加约束。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">-- 将前面的表修改为</span><br><span class="line">create table stu( -- 创建一个表</span><br><span class="line">	id int primary key auto_increment, -- 设置主键约束自增</span><br><span class="line">	sname varchar(32) unique, -- 唯一约束</span><br><span class="line">	brithday DATE not null, -- 非空约束</span><br><span class="line">	class int -- 默认约束</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">create table class(</span><br><span class="line">	cid int primary key auto_increment,</span><br><span class="line">	cname varchar(32) </span><br><span class="line">);</span><br><span class="line">#添加约束: FOREIGN KEY  外键</span><br><span class="line">#alter table 从表名 add [constraint] [外键的名称] foreign key (从表的某个字段) references 主表(主表的字段)</span><br><span class="line">INSERT INTO class VALUE (NULL, &#39;一班&#39;), (NULL, &#39;二班&#39;), (NULL, &#39;三班&#39;);</span><br><span class="line">alter table stu add constraint class_stu_fk foreign key cid references stu(class);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-复杂查询-1"><a href="#2-复杂查询-1" class="headerlink" title="(2).复杂查询"></a>(2).复杂查询</h3><h4 id="a-内连接"><a href="#a-内连接" class="headerlink" title="a.内连接"></a>a.内连接</h4><p>​    内连接就是两个集合中的相交的部分。</p>
+<p><img src="image/%E5%86%85%E8%BF%9E%E6%8E%A5.png" alt="内连接"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-- 隐式内连接</span><br><span class="line">SELECT * FROM stu, class WHERE stu.&#96;class&#96; &#x3D; class.cid;</span><br><span class="line">-- 显式内连接:</span><br><span class="line">SELECT * FROM stu INNER JOIN class ON stu.&#96;class&#96; &#x3D; class.cid;</span><br></pre></td></tr></table></figure>
+
+<h4 id="b-外连接"><a href="#b-外连接" class="headerlink" title="b.外连接"></a>b.外连接</h4><p>​    外连接就是在查询到某个表的全部信息外，还能查到其他表中对应的信息。</p>
+<p><img src="image/%E5%A4%96%E8%BF%9E%E6%8E%A5.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-- 左外连接</span><br><span class="line">SELECT * FROM stu LEFT JOIN class ON stu.&#96;class&#96; &#x3D; class.&#96;cid&#96;;</span><br><span class="line">-- 右外连接</span><br><span class="line">SELECT * FROM stu RIGHT JOIN class ON stu.&#96;class&#96; &#x3D; class.&#96;cid&#96;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="c-子查询"><a href="#c-子查询" class="headerlink" title="c.子查询"></a>c.子查询</h4><p>​    数据库中有着类似嵌套查询的概念，某一个表查询出来的信息可以作为其他的查询的条件。通常来讲，如果逻辑太过于复杂我们就可以使用嵌套查询。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-- 查询学生班级编号大于2的班级名</span><br><span class="line">-- 班级编号大于2</span><br><span class="line">select class from stu where class &gt; 2;</span><br><span class="line">-- 查询语句</span><br><span class="line">select cname from class where cid in</span><br><span class="line">(select class from stu where class &gt; 2);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="三-事务"><a href="#三-事务" class="headerlink" title="三.事务"></a>三.事务</h1><h3 id="1-四大特性（ACID）"><a href="#1-四大特性（ACID）" class="headerlink" title="1.四大特性（ACID）"></a>1.四大特性（ACID）</h3><p>原子性: 事务将一组逻辑单元看成 一个操作 , 原子是最小单位不可再分割</p>
+<p>一致性: 事务的前后 数据的应该保持一致</p>
+<p>隔离性(isolation):  <strong>事务之间 彼此应该产生隔离</strong>, 隔离就会产生隔离问题 有问题就要解决</p>
+<p>持久性: 事务不可逆 , 事务操作以后 不可再逆转(commit 之后 或者 rollback  事务销毁 不会再有了)</p>
+<h3 id="2-解决方案-隔离级别"><a href="#2-解决方案-隔离级别" class="headerlink" title="2.解决方案(隔离级别)"></a>2.解决方案(隔离级别)</h3><p>1.读未提交: read uncommitted   : 不解决任何问题 (不可能用)</p>
+<p>2.读已提交: read committed : 解决脏读问题 , 有不可重复读和虚读的问题(oracle 的默认隔离级别)</p>
+<p>3.可重复读: repeatable read :  解决脏读和不可重复读问题  ,    有虚读问题  (mysql 默认的隔离级别)</p>
+<p>4.串行化: serializable   :(单线程 )解决所有问题 只有一个事务 (不可能用)</p>
+<p>​    mysql中实现事务的方法（以read committed为例）是将日志中的内容锁起来。例如，如果有消息其他事务要查询的话，必然是会对事务的隔离出现问题，那么我们在对这事务中有在未提交前的<strong>添加</strong>都需要锁起来，其他事务查询时会读到锁，认为没有这条sql，跳过这条语句。</p>
+<h3 id="3-repeatable-read"><a href="#3-repeatable-read" class="headerlink" title="3.repeatable read"></a>3.repeatable read</h3><p>​    采用的是MVCC和next-key-lock来解决重复读的问题。</p>
+<h4 id="a-MVCC"><a href="#a-MVCC" class="headerlink" title="a.MVCC"></a>a.MVCC</h4><p>​    MVCC有两种版本号，分别为系统版本号（递增的数字,开启一个事务就会增加一个数字），与事务版本号（在同一个事务中是同一个版本号）。</p>
+<p>​    在innodb的表每条语句都有三列隐藏列分别为RowID，DB_TRX_ID，DB_ROLL_PTR。使用的都是<strong>版本号</strong>，如果删除没有执行就是未定义的。</p>
+<p>​    创建和删除一行数据时，当前的系统版本号会作为其的版本号。如果删除的版本号大于其事务的版本号，说明已经被删除了。</p>
+<p>​    查询时，只能查询到系统版本号小于或等于的事务版本号的行，如果是删除行的数据就只能读取到系统版本号大于或未定义的事务版本号的行。</p>
+<p>​    对于查询操作的是基于当前的事务版本号的（快照读），对于增删改是基于当前的系统版本号的（当前读）。</p>
+<p>​    这样对于大多数的操作的都可以完成。</p>
+<p>​    不过还是有一个问题，事务1先开启（假设版本号为1），事务2后开启（假设版本号为2），在事务1上进行的增删改的操作都为版本号2的内容，那么对于事务2来说是可见的，也就是非隔离。</p>
+<h4 id="b-next-key-lock"><a href="#b-next-key-lock" class="headerlink" title="b.next-key-lock"></a>b.next-key-lock</h4><p>​    它是由行锁（record locks）和间隙锁（gap locks）组成，即锁住其本身还锁住其索引的间隙（不可为唯一的约束，innodb会优化成行锁），</p>
+
+      
+      <!-- 打赏 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/08/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%85%A5%E9%97%A8/" data-id="ckdizs6110002l0tug81r7i2v"
+        class="article-share-link">分享</a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/06/08/jdbc/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            jdbc
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/06/08/javaweb/web%E7%9A%84%E4%B8%89%E5%A4%A7%E7%BB%84%E4%BB%B6/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">web的三大组件</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        notify: false,
+        verify: false,
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        John Doe
+      </li>
+      <li>
+        
+          Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <ul class="list-inline">
+  <li>PV:<span id="busuanzi_value_page_pv"></span></li>
+  <li>UV:<span id="busuanzi_value_site_uv"></span></li>
+</ul>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+    
+    <aside class="sidebar">
+      
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Hexo"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">目录</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+			onClick: (e) => {
+      	document.getElementById(e.target.innerText).scrollIntoView()
+      	return false;
+    	}
+    });
+  </script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: false
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  
+  
+
+  </div>
+</body>
+
+</html>

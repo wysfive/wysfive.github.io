@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    反射基础 |  Hexo
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-java/反射基础" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  反射基础
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/16/java/%E5%8F%8D%E5%B0%84%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time datetime="2020-05-15T18:35:15.000Z" itemprop="datePublished">2020-05-16</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.6k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">6分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="一-类加载器"><a href="#一-类加载器" class="headerlink" title="一.类加载器"></a>一.类加载器</h1><p>​    程序运行后,第一次使用某个类时,就会将此类的class文件加载到内存中,并将此类的信息存储到一个class对象里。</p>
+<a id="more"></a>
+
+<h2 id="1-类加载时机"><a href="#1-类加载时机" class="headerlink" title="1 类加载时机"></a>1 类加载时机</h2><ol>
+<li><p>创建类的实例。</p>
+</li>
+<li><p>类的静态变量，或者为静态变量赋值。</p>
+</li>
+<li><p>类的静态方法。</p>
+</li>
+<li><p>使用反射方式来强制创建某个类或接口对应的java.lang.Class对象。</p>
+</li>
+<li><p>初始化某个类的子类。</p>
+</li>
+<li><p>直接使用java.exe命令来运行某个主类。</p>
+<p>以上六种情况的任何一种，都可以导致JVM将一个类加载到方法区。</p>
+</li>
+</ol>
+<h2 id="2-类加载器"><a href="#2-类加载器" class="headerlink" title="2 类加载器"></a>2 类加载器</h2><p><strong>类加载器：是负责将磁盘上的某个class文件读取到内存并生成Class的对象。</strong></p>
+<ul>
+<li>Java中有三种类加载器，它们分别用于加载不同种类的class：<ul>
+<li>启动类加载器(Bootstrap ClassLoader)：用于加载系统类库<JAVA_HOME>\bin目录下的class，例如：rt.jar。</li>
+<li>扩展类加载器(Extension ClassLoader)：用于加载扩展类库<JAVA_HOME>\lib\ext目录下的class。</li>
+<li>应用程序类加载器(Application ClassLoader)：用于加载我们自定义类的加载器。</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-双亲委托机制"><a href="#3-双亲委托机制" class="headerlink" title="3 双亲委托机制"></a>3 双亲委托机制</h2><ul>
+<li>“双亲委派模型”中，除了顶层的启动类加载器外（顶层为null），其余的类加载器都应当有自己的”父级类加载器”。</li>
+<li>这种关系不是通过”继承”实现的，通常是通过”组合”实现的。通过”组合”来表示父级类加载器。实际上是包含的关系，即”子类”中可以有父类的加载器。</li>
+<li>“双亲委派模型”的工作过程：<ul>
+<li>某个”类加载器”收到类加载的请求，它首先不会尝试自己去加载这个类，而是把请求交给父级类加载器。</li>
+<li>因此，所有的类加载的请求最终都会传送到顶层的”启动类加载器”中。</li>
+<li>如果”父级类加载器”无法加载这个类，然后子级类加载器再去加载。</li>
+</ul>
+</li>
+<li>双亲委派机制的好处：每次加载是都先用父类加载，这样就避免了自己不小心的编写的Object被它认为是自己的父类,使得这个不能用。</li>
+</ul>
+<hr>
+<h1 id="二-反射"><a href="#二-反射" class="headerlink" title="二.反射"></a>二.反射</h1><p>​    什么叫反射？</p>
+<p>​    高中我们学到，当生物受到外部刺激时，对外部刺激进行回应，称为反射。在java中，反射指的是程序在运行时，还能够依据目前运行时的状态，获取并操作类，换句话说为动态编程。</p>
+<h2 id="1-class对象"><a href="#1-class对象" class="headerlink" title="1 class对象"></a>1 class对象</h2><h3 id="1-1-class对象的获取"><a href="#1-1-class对象的获取" class="headerlink" title="1.1 class对象的获取"></a>1.1 class对象的获取</h3><ul>
+<li><p>方式1: 通过类名.class获得</p>
+</li>
+<li><p>方式2：通过对象名.getClass()方法获得</p>
+</li>
+<li><p>方式3：通过Class类的静态方法获得： static Class forName(“类全名”)</p>
+<p>  <strong>每一个类的Class对象都只有一个。</strong></p>
+</li>
+</ul>
+<h3 id="1-2-class常用方法"><a href="#1-2-class常用方法" class="headerlink" title="1.2 class常用方法"></a>1.2 class常用方法</h3><ul>
+<li>String getSimpleName(); 获得类名字符串：类名</li>
+<li>String getName();  获得类全名：包名+类名</li>
+<li>T newInstance() ;  创建Class对象关联类的对象</li>
+</ul>
+<h2 id="2-反射之构造方法"><a href="#2-反射之构造方法" class="headerlink" title="2 反射之构造方法"></a>2 反射之构造方法</h2><h3 id="2-1-Constructor类概述"><a href="#2-1-Constructor类概述" class="headerlink" title="2.1 Constructor类概述"></a>2.1 Constructor类概述</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">反射之操作构造方法的目的</span><br><span class="line">    * 获得Constructor对象来创建类的对象。</span><br><span class="line">    </span><br><span class="line">Constructor类概述</span><br><span class="line">    * 类中的每一个构造方法都是一个Constructor类的对象</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-Class类中与Constructor相关的方法"><a href="#2-2-Class类中与Constructor相关的方法" class="headerlink" title="2.2 Class类中与Constructor相关的方法"></a>2.2 Class类中与Constructor相关的方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. <span class="function">Constructor <span class="title">getConstructor</span><span class="params">(Class... parameterTypes)</span></span></span><br><span class="line"><span class="function">        * 根据参数类型获得对应的Constructor对象。</span></span><br><span class="line"><span class="function">        * 只能获得<span class="keyword">public</span>修饰的构造方法</span></span><br><span class="line"><span class="function"> 2. Constructor <span class="title">getDeclaredConstructor</span><span class="params">(Class... parameterTypes)</span></span></span><br><span class="line"><span class="function">        * 根据参数类型获得对应的Constructor对象</span></span><br><span class="line"><span class="function">    	* 可以是<span class="keyword">public</span>、<span class="keyword">protected</span>、<span class="params">(默认)</span>、<span class="keyword">private</span>修饰符的构造方法。</span></span><br><span class="line"><span class="function"> 3. Constructor[] <span class="title">getConstructors</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        获得类中的所有构造方法对象，只能获得<span class="keyword">public</span>的</span></span><br><span class="line"><span class="function"> 4. Constructor[] <span class="title">getDeclaredConstructors</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        获得类中的所有构造方法对象</span></span><br><span class="line"><span class="function">    	可以是<span class="keyword">public</span>、<span class="keyword">protected</span>、<span class="params">(默认)</span>、<span class="keyword">private</span>修饰符的构造方法。</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-Constructor对象常用方法"><a href="#2-3-Constructor对象常用方法" class="headerlink" title="2.3 Constructor对象常用方法"></a>2.3 Constructor对象常用方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. <span class="function">T <span class="title">newInstance</span><span class="params">(Object... initargs)</span>"</span></span><br><span class="line"><span class="function"> 	根据指定的参数创建对象</span></span><br><span class="line"><span class="function">2. <span class="keyword">void</span> <span class="title">setAccessible</span><span class="params">(<span class="keyword">true</span>)</span></span></span><br><span class="line"><span class="function">   设置"暴力反射"——是否取消权限检查，<span class="keyword">true</span>取消权限检查，<span class="keyword">false</span>表示不取消</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-反射之操作成员方法"><a href="#3-反射之操作成员方法" class="headerlink" title="3 反射之操作成员方法"></a>3 反射之操作成员方法</h2><h3 id="3-1-Method类概述"><a href="#3-1-Method类概述" class="headerlink" title="3.1 Method类概述"></a>3.1 Method类概述</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">反射之操作成员方法的目的</span><br><span class="line">    * 操作Method对象来调用成员方法</span><br><span class="line">    </span><br><span class="line">Method类概述</span><br><span class="line">    * 每一个成员方法都是一个Method类的对象。</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-Class类中与Method相关的方法"><a href="#3-2-Class类中与Method相关的方法" class="headerlink" title="3.2 Class类中与Method相关的方法"></a>3.2 Class类中与Method相关的方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* <span class="function">Method <span class="title">getMethod</span><span class="params">(String name,Class...args)</span></span>;</span><br><span class="line">    * 根据方法名和参数类型获得对应的构造方法对象，只能获得<span class="keyword">public</span>的</span><br><span class="line">* <span class="function">Method <span class="title">getDeclaredMethod</span><span class="params">(String name,Class...args)</span></span>;</span><br><span class="line">    * 根据方法名和参数类型获得对应的构造方法对象，包括<span class="keyword">public</span>、<span class="keyword">protected</span>、(默认)、<span class="keyword">private</span>的</span><br><span class="line">* Method[] getMethods();</span><br><span class="line">    * 获得类中的所有成员方法对象，返回数组，只能获得<span class="keyword">public</span>修饰的且包含父类的</span><br><span class="line">* Method[] getDeclaredMethods();</span><br><span class="line">    * 获得类中的所有成员方法对象，返回数组,只获得本类的，包括<span class="keyword">public</span>、<span class="keyword">protected</span>、(默认)、<span class="keyword">private</span>的</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-Method对象常用方法"><a href="#3-3-Method对象常用方法" class="headerlink" title="3.3 Method对象常用方法"></a>3.3 Method对象常用方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*  <span class="function">Object <span class="title">invoke</span><span class="params">(Object obj, Object... args)</span></span></span><br><span class="line"><span class="function">    * 调用指定对象obj的该方法</span></span><br><span class="line"><span class="function">    * args：调用方法时传递的参数</span></span><br><span class="line"><span class="function">*  <span class="keyword">void</span> <span class="title">setAccessible</span><span class="params">(<span class="keyword">true</span>)</span></span></span><br><span class="line"><span class="function">    设置"暴力访问"——是否取消权限检查，<span class="keyword">true</span>取消权限检查，<span class="keyword">false</span>表示不取消</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-反射之操作成员变量"><a href="#4-反射之操作成员变量" class="headerlink" title="4 反射之操作成员变量"></a>4 反射之操作成员变量</h2><h3 id="4-1-Field类概述"><a href="#4-1-Field类概述" class="headerlink" title="4.1 Field类概述"></a>4.1 Field类概述</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">反射之操作成员变量的目的</span><br><span class="line">    * 通过Field对象给对应的成员变量赋值和取值</span><br><span class="line"></span><br><span class="line">Field类概述</span><br><span class="line">    * 每一个成员变量都是一个Field类的对象。</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-Class类中与Field相关的方法"><a href="#4-2-Class类中与Field相关的方法" class="headerlink" title="4.2 Class类中与Field相关的方法"></a>4.2 Class类中与Field相关的方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* <span class="function">Field <span class="title">getField</span><span class="params">(String name)</span></span>;</span><br><span class="line">    *  根据成员变量名获得对应Field对象，只能获得<span class="keyword">public</span>修饰</span><br><span class="line">* <span class="function">Field <span class="title">getDeclaredField</span><span class="params">(String name)</span></span>;</span><br><span class="line">    *  根据成员变量名获得对应Field对象，包括<span class="keyword">public</span>、<span class="keyword">protected</span>、(默认)、<span class="keyword">private</span>的</span><br><span class="line">* Field[] getFields();</span><br><span class="line">    * 获得所有的成员变量对应的Field对象，只能获得<span class="keyword">public</span>的</span><br><span class="line">* Field[] getDeclaredFields();</span><br><span class="line">    * 获得所有的成员变量对应的Field对象，包括<span class="keyword">public</span>、<span class="keyword">protected</span>、(默认)、<span class="keyword">private</span>的</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-Field对象常用方法"><a href="#4-3-Field对象常用方法" class="headerlink" title="4.3 Field对象常用方法"></a>4.3 Field对象常用方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span>  <span class="title">set</span><span class="params">(Object obj, Object value)</span> </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setInt</span><span class="params">(Object obj, <span class="keyword">int</span> i)</span> 	</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setLong</span><span class="params">(Object obj, <span class="keyword">long</span> l)</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setBoolean</span><span class="params">(Object obj, <span class="keyword">boolean</span> z)</span> </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setDouble</span><span class="params">(Object obj, <span class="keyword">double</span> d)</span> </span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">Object <span class="title">get</span><span class="params">(Object obj)</span>  </span></span><br><span class="line"><span class="function"><span class="keyword">int</span>	<span class="title">getInt</span><span class="params">(Object obj)</span> </span></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">getLong</span><span class="params">(Object obj)</span> </span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">getBoolean</span><span class="params">(Object ob)</span></span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">getDouble</span><span class="params">(Object obj)</span> </span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setAccessible</span><span class="params">(<span class="keyword">true</span>)</span></span>;暴力反射，设置为可以直接访问私有类型的属性。</span><br><span class="line"><span class="function">Class <span class="title">getType</span><span class="params">()</span></span>; 获取属性的类型，返回Class对象。</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>setXxx方法都是给对象obj的属性设置使用，针对不同的类型选取不同的方法。</p>
+<p>getXxx方法是获取对象obj对应的属性值的，针对不同的类型选取不同的方法。</p>
+</blockquote>
+<hr>
+<h1 id="三-动态代理"><a href="#三-动态代理" class="headerlink" title="三.动态代理"></a>三.动态代理</h1>
+      
+      <!-- 打赏 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/16/java/%E5%8F%8D%E5%B0%84%E5%9F%BA%E7%A1%80/" data-id="ckdizs61h0006l0tu2sgs31nc"
+        class="article-share-link">分享</a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/05/18/javaweb/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            前端基础
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/05/15/java/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">网络编程</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        notify: false,
+        verify: false,
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        John Doe
+      </li>
+      <li>
+        
+          Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <ul class="list-inline">
+  <li>PV:<span id="busuanzi_value_page_pv"></span></li>
+  <li>UV:<span id="busuanzi_value_site_uv"></span></li>
+</ul>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+    
+    <aside class="sidebar">
+      
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Hexo"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">目录</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+			onClick: (e) => {
+      	document.getElementById(e.target.innerText).scrollIntoView()
+      	return false;
+    	}
+    });
+  </script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: false
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  
+  
+
+  </div>
+</body>
+
+</html>

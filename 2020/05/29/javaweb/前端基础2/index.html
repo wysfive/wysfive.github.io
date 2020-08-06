@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    前端基础2 |  Hexo
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-javaweb/前端基础2" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  前端基础2
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/29/javaweb/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%802/" class="article-date">
+  <time datetime="2020-05-29T14:56:55.000Z" itemprop="datePublished">2020-05-29</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">841字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">3分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="JQuery"><a href="#JQuery" class="headerlink" title="JQuery"></a>JQuery</h1><p>​    JQuery是一个js的框架，封装了dom操作、事件、页面动画、异步操作等。</p>
+<hr>
+<h2 id="1-基础语法"><a href="#1-基础语法" class="headerlink" title="1.基础语法"></a>1.基础语法</h2><p>​    用$()来选取元素，里面使用的是css选择器，其中jq与dom对象之间可以相互装换，</p>
+<pre><code> dom对象 可以使用\$构造 例如\$(dom对象)   
+
+jquery对象 可以使用数组取索引值的形式 例如 \$[index] 或 $.get(index) </code></pre><p>​    需要注意的是使用前要导这个库</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"../js/jquery-1.11.3.js"</span>/&gt;</span><br><span class="line"><span class="comment">// 页面加载完 </span></span><br><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"页面加载完成自动执行,匿名函数"</span>);  </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="2-基础操作"><a href="#2-基础操作" class="headerlink" title="2.基础操作"></a>2.基础操作</h2><p>​    在后面的使用xxx()来说明获取，使用xxx(内容)来说明修改。需要注意的是JQ与dom对象方法不互通。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. $.each() 用法示例 $.each(function(i,e)&#123;&#125;) 注意 e是dom对象</span></span><br><span class="line">  $lis.each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log($(<span class="keyword">this</span>).text());<span class="comment">//遍历每一个jquery对象元素  </span></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. text() 获取或修改文本内容 类似于 dom.innerText    </span></span><br><span class="line"><span class="comment">// 3. html() 获取或修改html内容 类似 dom.innerHTML</span></span><br><span class="line"><span class="comment">// 4. val() 获取或修改表单控件的value值 等于dom.value    </span></span><br><span class="line"><span class="comment">// 5. prop() 获取或修改原生属性值 等于 dom.properties    </span></span><br><span class="line"><span class="comment">// 6. attr() 获取或修改自定义属性值 等于 dom.setAttribute() dom.getAttribute()</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment"> 7. css() 获取或者修改CSS样式 用法            </span></span><br><span class="line"><span class="comment">	css(样式名) 获取一个样式 等于 dom.style.驼峰样式名            </span></span><br><span class="line"><span class="comment">	css(样式名,样式值) 设置一个样式 dom.style.驼峰样式名=样式值</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">"#p1"</span>).css(<span class="string">"color"</span>,<span class="string">"white"</span>);<span class="comment">//设置字体白色 </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 8. toggleClass() 切换一个样式</span></span><br><span class="line">$p4.toggleClass(<span class="string">"mpp"</span>);<span class="comment">//切换 无则添加  </span></span><br><span class="line">$p4.toggleClass(<span class="string">"mpp"</span>);<span class="comment">//切换 有则删除</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="3-基础事件"><a href="#3-基础事件" class="headerlink" title="3.基础事件"></a>3.基础事件</h2><p>​    jquery事件与dom事件写法区别， jquery 都不要加on   <code>例如 $.click(函数)</code> ，dom对象都需要加on。</p>
+<p>jquery常用事件   </p>
+<ol>
+<li>ready 页面加载完成    </li>
+<li>blur 失去焦点    </li>
+<li>change 表单控件的value值改变时    </li>
+<li>mouseover mouseout hover 鼠标移入移出    </li>
+<li>click 单击</li>
+</ol>
+<hr>
+<h2 id="4-JSON"><a href="#4-JSON" class="headerlink" title="4.JSON"></a>4.JSON</h2><p>​    json是一种数据交换的形式。</p>
+<p>JSON 语法规则    </p>
+<ol>
+<li>数据:{属性:值,属性:值}    </li>
+<li>键值:键值之间是冒号,属性值与属性值之间是逗号    </li>
+<li>对象:用{}表示    </li>
+<li>数组:用[]表示</li>
+</ol>
+<p>JSON对象使用中常见的具体形式</p>
+<pre><code>1. 对象类型        格式 {属性:值,属性:值}    </code></pre><ol start="2">
+<li>数组/集合类型        格式 [值1,值2,值3]    </li>
+<li>混合类型        <ol>
+<li>对象中属性的值是数组            {属性:[值1,值2,值3],属性:[值1,值2,值3]}       </li>
+<li>数组中的值是对象            [{属性:值,属性:值},{属性:值,属性:值}]</li>
+</ol>
+</li>
+</ol>
+<p>JSON对象与字符串转换的相关函数    </p>
+<ol>
+<li><p>JSON.stringify(object) 把对象转为字符串    </p>
+</li>
+<li><p>JSON.parse(string) 把字符串转为对象</p>
+<p><strong>实际使用起来就是数组用索引和[]，对象用打点和{}。</strong></p>
+</li>
+</ol>
+<hr>
+<h2 id="5-Ajax"><a href="#5-Ajax" class="headerlink" title="5.Ajax"></a>5.Ajax</h2><p>​    ajax可以实现浏览器和服务器之间的异步通讯，至于异步就是有回调函数，发送后直接执行下面的语句，不会浪费系统资源。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123; </span><br><span class="line">    type:<span class="string">"get"</span>, <span class="comment">// 请求方式 get,post</span></span><br><span class="line">    url:<span class="string">"../data/student.txt"</span>, <span class="comment">// 服务器的地址</span></span><br><span class="line">    data:&#123;<span class="attr">name</span>:<span class="string">"张三"</span>,<span class="attr">pass</span>:<span class="number">123</span>&#125;, <span class="comment">// 请求的数据</span></span><br><span class="line">    dataType:<span class="string">"text"</span>, 	<span class="comment">// 返回的数据类型 text,json</span></span><br><span class="line">    <span class="keyword">async</span>:<span class="literal">true</span>, </span><br><span class="line">    success:<span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;&#125;,  <span class="comment">// 成功</span></span><br><span class="line">    error:<span class="function"><span class="keyword">function</span>(<span class="params">error</span>)</span>&#123;&#125;  <span class="comment">// 失败</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 简写形式</span></span><br><span class="line"><span class="comment">// $.方式(地址,数据,成功函数,返回类型)</span></span><br><span class="line">$.<span class="keyword">get</span>("test.php", &#123; name: <span class="string">"张三"</span>, <span class="attr">pass</span>: <span class="string">"123"</span> &#125;,</span><br><span class="line">      <span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(response);  </span><br><span class="line">&#125;);</span><br><span class="line">$.post(<span class="string">"test.php"</span>, &#123; <span class="attr">name</span>: <span class="string">"张三"</span>, <span class="attr">pass</span>: <span class="string">"123"</span> &#125;,  </span><br><span class="line">       <span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;     </span><br><span class="line">    <span class="built_in">console</span>.log(response);   </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>​    </p>
+
+      
+      <!-- 打赏 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/29/javaweb/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%802/" data-id="ckdizs61l000bl0tueu1k3sq6"
+        class="article-share-link">分享</a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/06/07/javaweb/%E5%9F%9F%E5%AF%B9%E8%B1%A1/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            域对象
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/05/18/javaweb/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">前端基础</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        notify: false,
+        verify: false,
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        John Doe
+      </li>
+      <li>
+        
+          Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <ul class="list-inline">
+  <li>PV:<span id="busuanzi_value_page_pv"></span></li>
+  <li>UV:<span id="busuanzi_value_site_uv"></span></li>
+</ul>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+    
+    <aside class="sidebar">
+      
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Hexo"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">目录</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+			onClick: (e) => {
+      	document.getElementById(e.target.innerText).scrollIntoView()
+      	return false;
+    	}
+    });
+  </script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: false
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  
+  
+
+  </div>
+</body>
+
+</html>

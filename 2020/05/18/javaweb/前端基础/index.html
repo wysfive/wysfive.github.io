@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    前端基础 |  Hexo
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-javaweb/前端基础" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  前端基础
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/18/javaweb/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time datetime="2020-05-17T17:54:42.000Z" itemprop="datePublished">2020-05-18</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.1k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">8分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="一-HTML"><a href="#一-HTML" class="headerlink" title="一 HTML"></a>一 HTML</h1><p>​    HTML(Hyper Text Markup Language)超文本标记语言，不仅可以展示文字，还可以显示图片，超链接，音乐，视频等。</p>
+<h2 id="1-书写规范"><a href="#1-书写规范" class="headerlink" title="1.书写规范"></a>1.书写规范</h2><p>​    HTML是一种标签语言，标签需要正确的嵌套，其实就是为了保证其树结构的完整，标签通常有两种写法。</p>
+<ul>
+<li><title>index</title>
+  <meta name="generator" content="hexo-theme-yilia-plus">  有开始和结束标签</li>
+<li><meta /> 自闭和标签
+
+</li>
+</ul>
+<hr>
+<h2 id="2-HTML常用便签"><a href="#2-HTML常用便签" class="headerlink" title="2.HTML常用便签"></a>2.HTML常用便签</h2><ol>
+<li><p><strong>标题hn</strong> </p>
+<h1>标题</h1>
+</li>
+<li><p><strong>水平线hr</strong></p>
+<hr/>
+</li>
+<li><p><strong>段落</strong> </p>
+<p>俺是段落</p>
+</li>
+<li><p><strong>超链接</strong> </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://www.runoob.com "</span>&gt;</span>菜鸟我的api<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>图片</strong> </p>
+<p>​    通常来说，不指定高度，可以用百分比来指定width（宽度），../代表返回上一级，alt是返回失败的信息。</p>
+<img width="200px" src="../img/tupian.jpg" alt=""/> 
+</li>
+<li><p><strong>列表</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>无序<span class="tag">&lt;/<span class="name">li</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>无序<span class="tag">&lt;/<span class="name">li</span>&gt;</span>    </span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>/&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- order有序不用强记 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>有序<span class="tag">&lt;/<span class="name">li</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>有序<span class="tag">&lt;/<span class="name">li</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>容器</strong></p>
+<p><span>有多少显示多少</span></p>
+<div>必然占一行</div>
+</li>
+<li><p><strong>实体字符</strong></p>
+<p>半个英语字母英文空格&amp;nbsp</p>
+<p>一个汉字中文空格&amp;emsp</p>
+<p>小于号&amp;lt</p>
+<p>大于号&amp;gt</p>
+</li>
+<li><p><strong>表格</strong></p>
+<p>table&gt;tr[行数]&gt;td[列数]</p>
+</li>
+<li><p><strong>表单</strong></p>
+<p>​    表单必须会,下面的表单基本概况了需要掌握的内容，我不一一介绍，其中get与post的区别是get会在浏览器上显示，并且内容比post小。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"#"</span> <span class="attr">method</span>=<span class="string">"get"</span>&gt;</span>    </span><br><span class="line">    姓名<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"userName"</span> <span class="attr">placeholder</span>=<span class="string">"请您输入姓名"</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span>   </span><br><span class="line">    密码<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"userPass"</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span>    </span><br><span class="line">    生日<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"date"</span> <span class="attr">name</span>=<span class="string">"userBirth"</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span>    </span><br><span class="line">    性别<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"gender"</span> <span class="attr">value</span>=<span class="string">"male"</span> <span class="attr">id</span>=<span class="string">"male"</span>  <span class="attr">checked</span>/&gt;</span><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"male"</span>&gt;</span> 男<span class="symbol">&amp;emsp;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span>    </span><br><span class="line">    	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"gender"</span> <span class="attr">value</span>=<span class="string">"female"</span> <span class="attr">id</span>=<span class="string">"female"</span>/&gt;</span> <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"female"</span>&gt;</span>女<span class="tag">&lt;/<span class="name">label</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>/&gt;</span>    </span><br><span class="line">    爱好<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"smoke"</span>/&gt;</span> 抽烟 <span class="symbol">&amp;emsp;</span>    </span><br><span class="line">    	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"drink"</span> <span class="attr">checked</span>=<span class="string">"checked"</span>/&gt;</span>喝酒 <span class="symbol">&amp;emsp;</span>    </span><br><span class="line">    	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">value</span>=<span class="string">"perm"</span> <span class="attr">checked</span>/&gt;</span> 烫头<span class="symbol">&amp;emsp;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span>    </span><br><span class="line">    头像<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"userPic"</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span>    </span><br><span class="line">    学历<span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">"userEdu"</span>&gt;</span>        </span><br><span class="line">    		<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"1"</span>&gt;</span>幼稚园<span class="tag">&lt;/<span class="name">option</span>&gt;</span>        </span><br><span class="line">    		<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"2"</span>&gt;</span>小学园<span class="tag">&lt;/<span class="name">option</span>&gt;</span>       </span><br><span class="line">    		<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"3"</span> <span class="attr">selected</span>=<span class="string">"selected"</span>&gt;</span>初中园<span class="tag">&lt;/<span class="name">option</span>&gt;</span>    <span class="tag">&lt;/<span class="name">select</span>&gt;</span>    <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	简介<span class="tag">&lt;<span class="name">textarea</span> <span class="attr">name</span>=<span class="string">"userDesc"</span> <span class="attr">cols</span>=<span class="string">"50"</span> <span class="attr">rows</span>=<span class="string">"10"</span>&gt;</span>默认值<span class="tag">&lt;/<span class="name">textarea</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>/&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"reset"</span> <span class="attr">value</span>=<span class="string">"清空按钮"</span>/&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交按钮"</span>/&gt;</span>    <span class="tag">&lt;<span class="name">br</span>/&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"普通按钮"</span>/&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="3-小总结"><a href="#3-小总结" class="headerlink" title="3.小总结"></a>3.小总结</h2><p>​    HTML可以完成一个有基本内容的界面，而接下来学的css和js分别是美化和是页面动态起来。</p>
+<hr>
+<h1 id="二-CSS"><a href="#二-CSS" class="headerlink" title="二 CSS"></a>二 CSS</h1><p>​    CSS(Cascading Style Sheet)层叠样式表</p>
+<p>​    层叠样式: 对同一个标签应用不同的样式,所有样式会叠加在一起展示出效果.</p>
+<p>​    优点:把html内容和css样式分离,降低了耦合度,提高了样式复用性,而且还可以提供更强大的美化效果。</p>
+<h2 id="1-选择器"><a href="#1-选择器" class="headerlink" title="1.选择器"></a>1.选择器</h2><ul>
+<li><p>CSS格式 {样式名:样式值;样式名:样式值;}</p>
+</li>
+<li><p>css的样式有三种<strong>引入方式</strong>：</p>
+<ul>
+<li><p><strong>行内</strong>    在行内的style属性中添加样式</p>
+<div style="font-weight:bold;">加粗</div>    
+
+<p>   <strong>内部</strong>(内嵌)    在页面中的style标签中写样式,推荐放置在head中的底部</p>
+<p>作用域 本页面 </p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span>       </span><br><span class="line">    h2&#123;           </span><br><span class="line"><span class="css">        <span class="selector-tag">color</span><span class="selector-pseudo">:green</span>;<span class="comment">/*字体颜色 绿色*/</span> </span></span><br><span class="line"><span class="css">        <span class="selector-tag">font-style</span><span class="selector-pseudo">:italic</span>;<span class="comment">/*倾斜*/</span></span></span><br><span class="line">    &#125;    </span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>外部</strong>    使用link标签引入外部样式 作用域 所有引入的页面</p>
+  <link href="../css/外部样式.css" rel="stylesheet"/> 
+
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p> CSS基本<strong>选择器</strong>:    </p>
+<p>​    1.标签 根据标签匹配元素 格式 <strong>标签{}</strong>   </p>
+<p>​    2.类 根据class的值匹配元素 class属性是给标签归类添加样式 格式 <strong>.class{}</strong>   </p>
+<p>​    3.ID 根据id值匹配元素 id属性是标签的唯一标志 <strong>#id{}</strong></p>
+<p>  扩展选择器 </p>
+<p>​    关系    </p>
+<p>​    <strong>E,F</strong> 并列    </p>
+<p>​    <strong>E F</strong> 后代 </p>
+<p>​    属性    <strong>E[attribute=value]</strong></p>
+<hr>
+<h2 id="2-盒子模型理论"><a href="#2-盒子模型理论" class="headerlink" title="2.盒子模型理论"></a>2.盒子模型理论</h2><p>​    在前端中,万物皆盒子。</p>
+<p><img src="img/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%8001.png" alt=""></p>
+<p>​    盒子模型的组成: </p>
+<ul>
+<li>margin (外)边距 边框之外的距离 默认透明 </li>
+<li>border 边框 可以设置边框的   (边框算是盒子中的内容)</li>
+<li>padding (内)填充 边框和内容之间的距离 默认透明 </li>
+<li>content 内容 是标签中内容放置区域</li>
+</ul>
+<hr>
+<h1 id="三-JS"><a href="#三-JS" class="headerlink" title="三 JS"></a>三 JS</h1><p>​    javascript由ECMA script js的基础语法，BOM浏览器对象，DOM文档对象。</p>
+<h2 id="1-JS介绍"><a href="#1-JS介绍" class="headerlink" title="1.JS介绍"></a>1.JS介绍</h2><p>JS三种输出方式    </p>
+<ol>
+<li>输出到浏览器控制台    <code>console.log();</code></li>
+<li>输出html内容到页面    <code>document.write()</code></li>
+<li>浏览器弹框输出字符    <code>alter()</code></li>
+</ol>
+<p>JS数据类型    常用数据类型        </p>
+<ol>
+<li>string 字符串类型       </li>
+<li>number 数字 包括整数和小数类型       </li>
+<li>boolean 布尔类型 值只有 true和false 两个     </li>
+<li>object 对象类型 空对象使用 null表示  5. undefined 变量未赋值</li>
+</ol>
+<p>JS与java不同: </p>
+<ol>
+<li>“+”只要两个都为数字可以不论类型来相加,</li>
+<li>“==” 可以不论类型判断数字相等,  “= = =”才是判断类型与数据相等</li>
+<li>判断是否不一定要布尔类型,只要默认就是否</li>
+</ol>
+<hr>
+<h2 id="2-事件"><a href="#2-事件" class="headerlink" title="2.事件"></a>2.事件</h2><p>​    js代码不一定在运行后执行，它有些代码可以通过绑定事件，直到事件发生才执行绑定事件中的代码。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">事件的绑定方式</span></span><br><span class="line"><span class="comment">   事件种类</span></span><br><span class="line"><span class="comment">   1. 命名函数 没有this绑定,需要手动传递this</span></span><br><span class="line"><span class="comment">   2. 匿名函数 默认有this绑定,可以直接使用</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"p1"</span> <span class="attr">onclick</span>=<span class="string">"myf1(this)"</span> <span class="attr">title</span>=<span class="string">"我是p1"</span>&gt;</span>1. 命名函数<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"p2"</span> <span class="attr">title</span>=<span class="string">"我是p2"</span>&gt;</span>2. 匿名函数<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="built_in">window</span>); <span class="comment">// window 浏览器对象</span></span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="comment">//1. 命名函数 格式 onEvent="函数()"</span></span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">myf1</span><span class="params">(obj)</span> </span>&#123; <span class="comment">// 命名函数绑定把方法调用给事件属性</span></span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="string">"命名函数执行"</span>);</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="comment">// window 浏览器对象</span></span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="comment">//2. 匿名函数 格式 onEvent=函数</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> p2 = <span class="built_in">document</span>.querySelector(<span class="string">"#p2"</span>);</span></span><br><span class="line"><span class="actionscript">    p2.onclick = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;<span class="comment">// 当p2被点击时调用方法执行</span></span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="string">"匿名函数执行"</span>);</span></span><br><span class="line"><span class="handlebars"><span class="xml">        console.log(this);// <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"p2"</span> <span class="attr">title</span>=<span class="string">"我是p2"</span>&gt;</span>2. 匿名函数<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>​    事件是js代码中的重点内容，必须掌握，其中后面的常用事件有页面加载（onload），键盘事件（key）,鼠标事件（mouse），元素改变（onchange），点击（onclick）等，需要注意的是js代码有<strong>on</strong>，这和jq不同。</p>
+<hr>
+<h2 id="3-BOM对象"><a href="#3-BOM对象" class="headerlink" title="3.BOM对象"></a>3.BOM对象</h2><p>​    js中会把整个浏览器当成一个对象,，从而对这个浏览器进行各种各样的操作。</p>
+<p><strong>JS三个弹框</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> alert(<span class="string">"展示内容"</span>);   <span class="comment">// alert展示内容</span></span><br><span class="line"><span class="number">2.</span> <span class="keyword">let</span> boo = confirm(<span class="string">"你确定吗?"</span>);	<span class="comment">// comfirm可以返回布尔值</span></span><br><span class="line"><span class="number">3.</span> <span class="keyword">let</span> str = prompt(<span class="string">"请输入数据"</span>,<span class="number">123</span>);    <span class="comment">// prompt输入</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>JS两个定时器</strong></p>
+<ol>
+<li>setTimeout(函数,毫秒值)执行一次  setInterval(函数,毫秒值)执行无数次       </li>
+<li>setTimeout销毁使用clearTimeout(定时器)    setInterval销毁使用clearInterval(定时器)</li>
+</ol>
+<p><strong>location地址</strong>    </p>
+<ol>
+<li>获取当前浏览器地址        location.href</li>
+<li>刷新当前页面        location.reload();</li>
+<li>跳转页面        location.href = “地址” ;</li>
+</ol>
+<hr>
+<h2 id="4-DOM对象"><a href="#4-DOM对象" class="headerlink" title="4.DOM对象"></a>4.DOM对象</h2><p>​    DOM对象可以获取整个页面的文档数据，DOM对象其实就是一个文档数。</p>
+<p><strong>获取元素</strong></p>
+<ol>
+<li>document.querySelector(CSS选择器) 根据css选择器获取一个元素对象        </li>
+<li>document.querySelectorAll(CSS选择器) 根据css选择器获取元素对象数组集合 </li>
+</ol>
+<p><strong>操作内容</strong></p>
+<ol>
+<li>element.innerText; 获取或者修改元素的纯文本内容    </li>
+<li>element.innerHTML; 获取或者修改元素的html内容   </li>
+<li>element.outerHTML; 获取或者修改包含自身的html内容</li>
+</ol>
+<p><strong>操作属性</strong>    </p>
+<ol>
+<li><p>获取文本框的值,单选框或复选框的选中状态        </p>
+<p>​    语法: element.properties 获取或者修改元素对象的<strong>原生属性</strong></p>
+</li>
+<li><p>给元素设置自定义属性        </p>
+<p>​    语法: element.<strong>set</strong>Attribute(属性名,属性值) 给元素设置一个属性值,可以设置原生和自定义    </p>
+</li>
+<li><p>获取元素的自定义属性值        </p>
+<p>​    语法: element.<strong>get</strong>Attribute(属性名) 获取元素的一个属性值,可以获取原生和自定义   </p>
+</li>
+<li><p>移除元素的自定义属性        </p>
+<p>​    语法: element.<strong>remove</strong>Attribute(属性名)</p>
+</li>
+</ol>
+<p><strong>操作样式</strong>    </p>
+<ol>
+<li><p>设置一个css样式        </p>
+<p>​    语法: element.style.驼峰格式样式属性名   获取或者修改一个css样式    </p>
+</li>
+<li><p>批量设置css样式        </p>
+<p>​    语法: element.style.cssText 获取后者修改 标签的style属性的文本值    </p>
+</li>
+<li><p>通过class设置样式        </p>
+<p>​    语法: element.className 获取或者修改标签的class属性的文本值</p>
+<p>这里我们通常是使用第二和第三种。</p>
+</li>
+</ol>
+
+      
+      <!-- 打赏 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/18/javaweb/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/" data-id="ckdizs61r000hl0tu9cvp7sfg"
+        class="article-share-link">分享</a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/05/29/javaweb/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%802/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            前端基础2
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/05/16/java/%E5%8F%8D%E5%B0%84%E5%9F%BA%E7%A1%80/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">反射基础</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        notify: false,
+        verify: false,
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        John Doe
+      </li>
+      <li>
+        
+          Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <ul class="list-inline">
+  <li>PV:<span id="busuanzi_value_page_pv"></span></li>
+  <li>UV:<span id="busuanzi_value_site_uv"></span></li>
+</ul>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+    
+    <aside class="sidebar">
+      
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Hexo"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">目录</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+			onClick: (e) => {
+      	document.getElementById(e.target.innerText).scrollIntoView()
+      	return false;
+    	}
+    });
+  </script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: false
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  
+  
+
+  </div>
+</body>
+
+</html>
